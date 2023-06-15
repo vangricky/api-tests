@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ricky-api
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: ricky-api
+      template:
+        metadata:
+          labels:
+            app: ricky-api
+          spec:
+            containers:
+              - name: ricky-api
+                image: us-docker.pkg.dev/cit-262-team1-ez/ricky-api/api-tests
+                ports:
+                  - containerPort: 3000
+                resources:
+                  limits:
+                    cpu: ".5"
+                    memory: "500Mi"
+                  requests:
+                    cpu: ".25"
+                    memory: "250Mi"
+                  livenessProbe:
+                    httpGet:
+                      path: /
+                      port: 3000
+                      scheme: HTTP
+                    failureThreshold: 1
+                    periodSeconds: 10
+                    timeoutSeconds: 10
+                  startupProbe:
+                    httpGet:
+                      path: /
+                      port: 3000
+                      scheme: HTTP
+                    failureThreshold: 30
+                    periodSeconds: 10
+                    timeoutSeconds: 10
