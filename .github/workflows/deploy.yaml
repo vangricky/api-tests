@@ -61,7 +61,7 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |-
-        docker push "gcr.io/cit-262-team1-ez/ricky-api:latest"
+        docker push "gcr.io/cit-262-team1-ez/ricky-api:latest""
 
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
@@ -69,3 +69,4 @@ jobs:
         kubectl apply -f dev-manifest.yaml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
+        

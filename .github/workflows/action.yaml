@@ -3,7 +3,7 @@ name: Test Login Endpoint
 on: [push]
 
 jobs:
-  build:
+  dev-test:
 
     runs-on: ubuntu-latest
 
