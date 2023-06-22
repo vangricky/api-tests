@@ -3,7 +3,7 @@ name: Test Login Endpoint
 on: [push]
 
 jobs:
-  dev-test:
+  build:
 
     runs-on: ubuntu-latest
 
@@ -15,5 +15,3 @@ jobs:
           node-version: '18.x'
       - run: npm install
       - run: npm test
-
-      
